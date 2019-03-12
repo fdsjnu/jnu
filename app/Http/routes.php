@@ -67,10 +67,7 @@ Route::delete('/backend/blog/force-destroy/{blog}', [
     'as'   => 'backend.blog.force-destroy'
 ]);
 Route::resource('/backend/blog', 'Backend\BlogController');
-Route::get('/backend/categories/search', [
-    'uses' => 'Backend\CategoriesController@search',
-    'as'   => 'backend.categories.search'
-]);
+
 Route::resource('/backend/categories', 'Backend\CategoriesController');
 
 Route::get('/backend/users/confirm/{users}', [
@@ -79,15 +76,23 @@ Route::get('/backend/users/confirm/{users}', [
 ]);
 Route::resource('/backend/users', 'Backend\UsersController');
 
-//Designations
-Route::get('/backend/designations/search', [
-    'uses' => 'Backend\Designations@search',
-    'as'   => 'backend.designations.search'
+Route::get('/backend/categories/search', [
+    'uses' => 'Backend\CategoriesController@search',
+    'as'   => 'backend.categories.search'
 ]);
-Route::resource('/backend/designations', 'Backend\Designations'); 
 
-//JobPOst
+Route::get('/backend/categoriessearch/search', [
+    'uses' => 'Backend\CategoriesController@search',
+    'as'   => 'backend.categories.search'
+]);
 
-Route::resource('/backend/jobposts', 'Backend\JobPosts'); 
+
+Route::get('/backend/categoriessearch/search', 'Backend\CategoriesController@search');
 
 
+Route::resource('/backend/departments', 'Backend\DepartmentController');
+
+Route::get('/backend/departments/search', [
+    'uses' => 'Backend\DepartmentController@search',
+    'as'   => 'backend.departments.search'
+]);

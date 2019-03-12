@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Post;
+//use App\Category;
+//use App\Post;
+use App\Designation;
 
-class CategoriesController extends BackendController
+
+class Designations extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +19,10 @@ class CategoriesController extends BackendController
      */
     public function index()
     {
-        $categories      = Category::with('posts')->orderBy('name')->paginate($this->limit);
-        $categoriesCount = Category::count();
+        $candidates      = Designation::orderBy('name')->paginate($this->limit);
+        $candidatesCount = Designation::count();
 
-        return view("backend.categories.index", compact('categories', 'categoriesCount'));
+        return view("backend.designations.index", compact('candidates', 'candidatesCount'));
     }
 
     /**
@@ -30,8 +32,8 @@ class CategoriesController extends BackendController
      */
     public function create()
     {
-        $category = new Category();
-        return view("backend.categories.create", compact('category'));
+        $category = new Designation();
+        return view("backend.designations.create", compact('category'));
     }
 
     /**
@@ -40,11 +42,11 @@ class CategoriesController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\CategoryStoreRequest $request)
+    public function store(Requests\DesignationRequest $request)
     {
-        Category::create($request->all());
+        Designation::create($request->all());
 
-        return redirect("/backend/categories")->with("message", "New category was created successfully!");
+        return redirect("/backend/designations")->with("message", "New designation was created successfully!");
     }
 
     /**
@@ -66,9 +68,9 @@ class CategoriesController extends BackendController
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Designation::findOrFail($id);
 
-        return view("backend.categories.edit", compact('category'));
+        return view("backend.designations.edit", compact('category'));
     }
 
     /**
@@ -78,11 +80,11 @@ class CategoriesController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\CategoryUpdateRequest $request, $id)
+    public function update(Requests\DesignationRequest $request, $id)
     {
-        Category::findOrFail($id)->update($request->all());
+        Designation::findOrFail($id)->update($request->all());
 
-        return redirect("/backend/categories")->with("message", "Category was updated successfully!");
+        return redirect("/backend/designations")->with("message", "Designation was updated successfully!");
     }
 
     /**
@@ -91,14 +93,14 @@ class CategoriesController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Requests\CategoryDestroyRequest $request, $id)
+    public function destroy(Request $request, $id)
     {
-        Post::withTrashed()->where('category_id', $id)->update(['category_id' => config('cms.default_category_id')]);
+        //Post::withTrashed()->where('category_id', $id)->update(['category_id' => config('cms.default_category_id')]);
 
-        $category = Category::findOrFail($id);
+        $category = Designation::findOrFail($id);
         $category->delete();
 
-        return redirect("/backend/categories")->with("message", "Category was deleted successfully!");
+        return redirect("/backend/designations")->with("message", "Designation was deleted successfully!");
     }
 
      public function search(Request $request)
@@ -110,20 +112,17 @@ class CategoriesController extends BackendController
         $code = $request->get('code');
         $description = $request->get('description');
 
-        $categories      = Category::where('id', '=', $id)
+        $candidates      = Designation::where('id', '=', $id)
                             ->orwhere('name', 'like', $name)
                             ->orwhere('code', '=', $code)
-                            ->whereNull('description', '=', $description)
-                            ->with('posts')
                             ->orderBy('name')
                             ->paginate($this->limit);
-        $categoriesCount = Category::where('id', '=', $id)->
+        $candidatesCount = Designation::where('id', '=', $id)->
                             orwhere('name', 'like', $name)->
                             orwhere('code', '=', $code)->
-                            whereNull('description', '=', $description)->
                             count();     
 
-        return view("backend.categories.index", compact('categories', 'categoriesCount'));
+        return view("backend.designations.index", compact('candidates', 'candidatesCount'));
     }
 
 }

@@ -26,7 +26,7 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
-        $categoryName = $category->title;
+        $categoryName = $category->name;
 
         $posts = $category->posts()
                           ->with('author', 'tags', 'comments')

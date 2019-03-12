@@ -96,3 +96,14 @@ Route::get('/backend/departments/search', [
     'uses' => 'Backend\DepartmentController@search',
     'as'   => 'backend.departments.search'
 ]);
+
+//Designations
+Route::get('/backend/designations/search', [
+    'uses' => 'Backend\Designations@search',
+    'as'   => 'backend.designations.search'
+]);
+Route::resource('/backend/designations', 'Backend\Designations'); 
+
+//JobPOst
+
+Route::resource('/backend/jobposts', 'Backend\JobPosts'); 

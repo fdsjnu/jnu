@@ -11,7 +11,7 @@
             @endif
         </div>
         <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-            {!! Form::label('Short Form') !!}
+            {!! Form::label('Code') !!}
             {!! Form::text('code', null, ['class' => 'form-control']) !!}
 
             @if($errors->has('code'))
@@ -19,19 +19,12 @@
             @endif
         </div>
 
-         <div class="form-group">
-            {!! Form::label('Description') !!}
-            {!! Form::textarea('description',null,  ['class' => 'form-control']) !!}
-         
-        </div>
+      
 
          <div class="form-group">
             {!! Form::label('Status') !!}
-          <!--   <select class="form-control" name="status">
-            <option value="active">Active</option>
-             <option value="inactive">Inactive</option>
-            </select> -->
-           {!! Form::select('status', array('active' => 'Active', 'inactive' => 'Inactive')); !!}
+        
+           {!! Form::select('status', array('1' => 'Active', '0' => 'Inactive')); !!}
          
         </div>
 
@@ -41,7 +34,7 @@
     <!-- /.box-body -->
     <div class="box-footer">
         <button type="submit" class="btn btn-primary">{{ $category->exists ? 'Update' : 'Save' }}</button>
-        <a href="{{ route('backend.categories.index') }}" class="btn btn-default">Cancel</a>
+        <a href="{{ route('backend.designations.index') }}" class="btn btn-default">Cancel</a>
     </div>
   </div>
   <!-- /.box -->

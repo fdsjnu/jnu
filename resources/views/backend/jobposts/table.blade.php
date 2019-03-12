@@ -10,7 +10,7 @@
             
             <td> 
                 {{ Form::submit('Search', array('class'=>'btn btn-default')) }}  
-                  <a href="{{ route('backend.categories.index') }}"><i class="fa fa-circle-o"></i> Refresh</a>
+                  <a href="{{ route('backend.jobposts.index') }}"><i class="fa fa-circle-o"></i> Refresh</a>
 
             </td>
 
@@ -25,27 +25,21 @@
         
         <tr>
            <td width="80">ID</td>
-            <td>Category Name</td>
-            <td>Short Form</td>
-            <td>Description</td>
-            <td>Status</td>
-            <td width="120">Post Count</td>
+            <td>Code</td>
+           <td>Department</td>
             <td width="80">Action</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($categories as $category)
+        @foreach($jobposts as $category)
 
             <tr>
                 <td>{{ $category->id }}</td>
-                <td>{{ $category->name }}</td>
                 <td>{{ $category->code }}</td>
-                <td> {{ $category->description }}</td>
-                <td> {{ $category->status}}</td>
-                <td>{{ $category->posts->count() }}</td>
+                 <td>{{ $category->department->name }}</td>
                  <td>
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['backend.categories.destroy', $category->id]]) !!}
-                        <a href="{{ route('backend.categories.edit', $category->id) }}" class="btn btn-xs btn-default">
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['backend.jobposts.destroy', $jobposts->id]]) !!}
+                        <a href="{{ route('backend.jobposts.edit', $category->id) }}" class="btn btn-xs btn-default">
                             <i class="fa fa-edit"></i>
                         </a>
                         @if($category->id == config('cms.default_category_id'))

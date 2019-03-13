@@ -21,7 +21,7 @@
             showClear: true
         });  
          $('#datetimepicker3').datetimepicker({
-            format: 'HH:mm:ss',
+            format: 'YYYY-MM-DD',
             showClear: true
         });  
          $('#datetimepicker4').datetimepicker({

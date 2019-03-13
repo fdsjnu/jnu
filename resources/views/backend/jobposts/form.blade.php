@@ -31,30 +31,30 @@
          
         </div>
 
-         <div class="form-group col-md-6">
-            {!! Form::label('Post') !!}
-        
-          <select class="form-control" name="post">
-             <option value="">Select</option>
-            @foreach($items as $item)
-              <option value="{{$item->id}}">{{$item->name}}</option>
-            @endforeach
-        </select>
+         <div class="form-group col-md-6 {{ $errors->has('post') ? 'has-error' : '' }}">
+
+            {!! Form::label('Post') !!}        
+
+          {!! Form::select('post', App\Designation::pluck('name', 'id'), null, ['class' => 'form-control', 'placeholder' => 'Choose post']) !!}
+          @if($errors->has('post'))
+              <span class="help-block">{{ $errors->first('post') }}</span>
+          @endif
+
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 {{ $errors->has('department') ? 'has-error' : '' }}">
             {!! Form::label('Department') !!}
         
-          <select class="form-control" name="department">
-             <option value="">Select</option>
-            @foreach($departments as $department)
-              <option value="{{$department->id}}">{{$department->name}}</option>
-            @endforeach
-        </select>
+             {!! Form::select('department', App\Department::pluck('name', 'id'), null, ['class' => 'form-control', 'placeholder' => 'Choose department']) !!}
+              @if($errors->has('department'))
+                  <span class="help-block">{{ $errors->first('department') }}</span>
+              @endif
+
+        
         </div>
          <div class="form-group col-md-4 {{ $errors->has('session') ? 'has-error' : '' }}">
             {!! Form::label('Session') !!}
-            {!! Form::text('session', null, ['class' => 'form-control']) !!}
+            {!! Form::text('session', null, ['class' => 'form-control', 'placeholder' => '2019-20']) !!}
 
             @if($errors->has('session'))
                 <span class="help-block">{{ $errors->first('session') }}</span>
@@ -64,7 +64,7 @@
         <div class="form-group col-md-4 {{ $errors->has('startDate') ? 'has-error' : '' }}">
                 {!! Form::label('startDate', 'Start Date') !!}
                 <div class='input-group date' id='datetimepicker1'>
-                    {!! Form::text('startDate', date("Y-m-d"), ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
+                    {!! Form::text('startDate', '', ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -78,7 +78,7 @@
           <div class="form-group col-md-4 {{ $errors->has('startingTime') ? 'has-error' : '' }}">
                 {!! Form::label('startingTime', 'Satrting Time') !!}
                 <div class='input-group date' id='datetimepicker2'>
-                    {!! Form::text('startingTime', date("HH:mm:ss"), ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
+                    {!! Form::text('startingTime', '', ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -92,7 +92,7 @@
           <div class="form-group col-md-4 {{ $errors->has('closeDate') ? 'has-error' : '' }}">
                 {!! Form::label('closeDate', 'Close Date') !!}
                 <div class='input-group date' id='datetimepicker3'>
-                    {!! Form::text('closeDate', date("Y-m-d"), ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
+                    {!! Form::text('closeDate', '', ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -106,7 +106,7 @@
           <div class="form-group col-md-4 {{ $errors->has('closingTime') ? 'has-error' : '' }}">
                 {!! Form::label('closingTime', 'Satrting Time') !!}
                 <div class='input-group date' id='datetimepicker4'>
-                    {!! Form::text('closingTime', date("HH:mm:ss"), ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
+                    {!! Form::text('closingTime', '', ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>

@@ -45,11 +45,11 @@ class JobPosts extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\CategoryStoreRequest $request)
+    public function store(Requests\JobPostRequest $request)
     {
         JobPost::create($request->all());
 
-        return redirect("/backend/jobposts")->with("message", "New category was created successfully!");
+        return redirect("/backend/jobposts")->with("message", "New job post was created successfully!");
     }
 
     /**
@@ -87,7 +87,7 @@ class JobPosts extends Controller
     {
         JobPost::findOrFail($id)->update($request->all());
 
-        return redirect("/backend/jobposts")->with("message", "Category was updated successfully!");
+        return redirect("/backend/jobposts")->with("message", "Job post was updated successfully!");
     }
 
     /**
@@ -103,6 +103,6 @@ class JobPosts extends Controller
         $category = JobPost::findOrFail($id);
         $category->delete();
 
-        return redirect("/backend/jobposts")->with("message", "Category was deleted successfully!");
+        return redirect("/backend/jobposts")->with("message", "Data was deleted successfully!");
     }
 }

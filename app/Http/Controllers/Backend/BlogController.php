@@ -59,6 +59,7 @@ class BlogController extends BackendController
         }
 
         $statusList = $this->statusList($request);
+        //dd($posts );
 
         return view("backend.blog.index", compact('posts', 'postCount', 'onlyTrashed', 'statusList'));
     }

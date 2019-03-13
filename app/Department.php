@@ -13,6 +13,11 @@ class Department extends Model
     {
         return $this->hasMany(Post::class);
     }
+    public function jobposts()
+    {
+        return $this->belongsTo(JobPost::class);
+    }
+
 
     public function getRouteKeyName()
     {

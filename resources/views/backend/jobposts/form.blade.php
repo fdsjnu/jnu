@@ -64,7 +64,7 @@
         <div class="form-group col-md-4 {{ $errors->has('startDate') ? 'has-error' : '' }}">
                 {!! Form::label('startDate', 'Start Date') !!}
                 <div class='input-group date' id='datetimepicker1'>
-                    {!! Form::text('startDate', '', ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
+                    {!! Form::text('startDate', $jobpost->exists ? null : ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -78,7 +78,7 @@
           <div class="form-group col-md-4 {{ $errors->has('startingTime') ? 'has-error' : '' }}">
                 {!! Form::label('startingTime', 'Satrting Time') !!}
                 <div class='input-group date' id='datetimepicker2'>
-                    {!! Form::text('startingTime', '', ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
+                    {!! Form::text('startingTime', $jobpost->exists ? null : ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -92,7 +92,7 @@
           <div class="form-group col-md-4 {{ $errors->has('closeDate') ? 'has-error' : '' }}">
                 {!! Form::label('closeDate', 'Close Date') !!}
                 <div class='input-group date' id='datetimepicker3'>
-                    {!! Form::text('closeDate', '', ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
+                    {!! Form::text('closeDate', $jobpost->exists ? null : ['class' => 'form-control', 'placeholder' => 'Y-m-d']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -106,7 +106,7 @@
           <div class="form-group col-md-4 {{ $errors->has('closingTime') ? 'has-error' : '' }}">
                 {!! Form::label('closingTime', 'Satrting Time') !!}
                 <div class='input-group date' id='datetimepicker4'>
-                    {!! Form::text('closingTime', '', ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
+                    {!! Form::text('closingTime', $jobpost->exists ? null : ['class' => 'form-control', 'placeholder' => 'HH:mm:ss']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -119,15 +119,21 @@
 
          <div class="form-group col-md-4">
             {!! Form::label('Status') !!}        
-           <select class="form-control" name="status">
+           <!-- <select class="form-control" name="status">
             <option value="0">Active</option>
              <option value="1">Inactive</option>
-            </select>
+            </select> -->
+
+             {!! Form::select('status', array('1' => 'Active', '0' => 'Inactive'),['class' => 'form-control'] ); !!}
+
+              
          
         </div>
         <div class="col-md-12">Upload Required Section</div>
+       
         <div class="form-group col-md-4">
-           {{ Form::checkbox('uAcadmic', '1', true) }} Upload Acadmic
+         <input type="checkbox" name="uAcadmic" value="1" @if(old('uAcadmic', $jobpost->uAcadmic ?? 1) === 1) checked @endif />Upload Acadmic
+           <!-- {{ Form::checkbox('uAcadmic', '1', true) }} Upload Acadmic -->
         </div>
          <div class="form-group col-md-4">
            {{ Form::checkbox('uTeachExp', '1', true) }} Upload Teaching Experience
@@ -146,7 +152,8 @@
            {{ Form::checkbox('uResArt ', '1', true) }} Upload Research Article
         </div>
          <div class="form-group col-md-12">
-           {{ Form::checkbox('uResPub', '1', true) }} Upload Research Publication
+            {{ Form::checkbox('uResPub', '1', true) }}  Upload Research Publication
+         
         </div>
 
 

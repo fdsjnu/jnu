@@ -35,7 +35,7 @@
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->code }}</td>
-                <td> {{ $category->status}}</td>
+                <td> <td>{{ $category->status == 1 ? 'Active': 'Inactive' }}</td></td> 
                  <td>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['backend.designations.destroy', $category->id]]) !!}
                         <a href="{{ route('backend.designations.edit', $category->id) }}" class="btn btn-xs btn-default">

@@ -105,5 +105,8 @@ Route::get('/backend/designations/search', [
 Route::resource('/backend/designations', 'Backend\Designations'); 
 
 //JobPOst
-
+Route::get('/backend/jobposts/search', [
+    'uses' => 'Backend\JobPosts@search',
+    'as'   => 'backend.jobposts.search'
+]);
 Route::resource('/backend/jobposts', 'Backend\JobPosts'); 

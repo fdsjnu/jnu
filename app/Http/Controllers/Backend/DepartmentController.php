@@ -18,7 +18,7 @@ class DepartmentController extends BackendController
      */
     public function index()
     {
-        $departments = Department::orderBy('name')->paginate($this->limit);
+        $departments = Department::with('jobpost')->orderBy('name')->paginate($this->limit);
         $departmentsCount = Department::count();
         ////echo "<pre>"; print_r($departments);die;
         return view("backend.departments.index", compact('departments', 'departmentsCount'));

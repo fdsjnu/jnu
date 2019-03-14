@@ -54,6 +54,10 @@
                                 <i class="fa fa-times"></i>
                             </button>
                     {!! Form::close() !!}
+                      <a href="{{ route('backend.jobposts.show', $jobpost->id) }}" class="btn btn-xs btn-default">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                         <butt
                 </td>
             </tr>
 

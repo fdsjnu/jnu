@@ -20,4 +20,6 @@ class JobPost extends Model
     	return $this->hasOne("App\Designation", "id", "post");
     }
 
+    
+
 }

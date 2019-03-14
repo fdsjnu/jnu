@@ -17,4 +17,8 @@ class Category extends Model
     {
         return 'code';
     }
+     public function postjobcategory()
+    {
+        return $this->belongsTo(PostJobCategory::class);
+    }
 }

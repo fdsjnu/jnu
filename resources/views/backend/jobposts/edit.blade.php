@@ -8,7 +8,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Categories
+          Job Post
           <small>Edit jobposts</small>
         </h1>
         <ol class="breadcrumb">

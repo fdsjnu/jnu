@@ -109,4 +109,14 @@ Route::get('/backend/jobposts/search', [
     'uses' => 'Backend\JobPosts@search',
     'as'   => 'backend.jobposts.search'
 ]);
+Route::get('/backend/editjobcategory/{jobid}/{postid}', [
+    'uses' => 'Backend\JobPosts@editjobcategory',
+    'as'   => 'backend.jobposts.editjobcategory'
+]);
+Route::put('/backend/updatejobcategory/{jobid}', [
+    'uses' => 'Backend\JobPosts@updatejobcategory',
+    'as'   => 'backend.jobposts.updatejobcategory'
+]);
+
+
 Route::resource('/backend/jobposts', 'Backend\JobPosts'); 

@@ -11,6 +11,8 @@ use App\JobPost;
 use App\Designation;
 use App\Department;
 use App\User;
+use App\PostJobCategory;
+
 use Illuminate\Support\Facades\Auth;
 class JobPosts extends Controller
 {
@@ -56,7 +58,19 @@ class JobPosts extends Controller
          $currentUser = Auth::user();
          $data = $request->all();
          $data['created_by'] = $currentUser->email;
-         JobPost::create($data);
+         $lastId =JobPost::create($data);
+
+         // $categories = Category::all();
+
+         // foreach ($categories as $category) {
+         //        $post_job_category = new PostJobCategory;
+         //        $post_job_category->post = $request->input('post');
+         //        $post_job_category->job = $lastId->id;
+         //        $post_job_category->category  = $category->id;
+         //        $post_job_category->save();
+         // }
+
+
         return redirect("/backend/jobposts")->with("message", "New job post was created successfully!");
     }
 
@@ -68,7 +82,12 @@ class JobPosts extends Controller
      */
     public function show($id)
     {
-        //
+        $jobpost = JobPost::findOrFail($id);
+        $total_postjobcategory = PostJobCategory::where('job','=',$id)->where('vacancy','!=','0')->count();
+        $postjobcategory = PostJobCategory::where('job','=',$id)->get();
+        $totalVacancy = PostJobCategory::where('job','=',$id)->sum('vacancy');
+
+        return view("backend.jobposts.show", compact('jobpost','total_postjobcategory','postjobcategory','totalVacancy'));
     }
 
     /**
@@ -85,6 +104,8 @@ class JobPosts extends Controller
         return view("backend.jobposts.edit", compact('jobpost'));
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -95,13 +116,85 @@ class JobPosts extends Controller
     public function update(Requests\JobPostRequest $request, $id)
     {
         //dd($request);
-         $currentUser = Auth::user();
          $data = $request->all();
-         $data['updated_by'] = $currentUser->email;
-        //JobPost::findOrFail($id)->update($request->all());
-         JobPost::findOrFail($id)->update($data);
+         $lastId =PostJobCategory::create($data);
+
 
         return redirect("/backend/jobposts")->with("message", "Job post was updated successfully!");
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editjobcategory($id,$post)
+    {
+        $jobpost = JobPost::findOrFail($id);
+        $total_postjobcategory = PostJobCategory::where('job','=',$id)->where('vacancy','!=','0')->count();
+        $postjobcategory = PostJobCategory::where('job','=',$id)->get();
+        $categories = Category::all();
+
+
+        return view("backend.jobposts.editjobcategory", compact('jobpost','total_postjobcategory','postjobcategory','categories'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatejobcategory(Request $request, $id)
+    {
+        //dd($request);
+         PostJobCategory::where('job', $id)->delete();
+        //  $data = $request->all();
+        //  PostJobCategory::create($data);
+        // $formValue                = new PostJobCategory;
+        // $formValue->post = $request->post;
+        // $formValue->job         = $request->job;
+        // $formValue->category = $request->category;
+        // $formValue->save();
+
+        for ($i = 1; $i < count($request->category); $i++) {
+                $answers[] = [
+                    'category' => $request->category[$i],
+                    'vacancy' => $request->vacancy[$i],
+                    'post' => $request->post,
+                    'job' => $request->job,
+                    'amount' => $request->amount[$i],
+                    'noFee' => $request->noFee[$i],  
+                    'allowed' => $request->allowed[$i]
+                ];
+            }
+        PostJobCategory::insert($answers);
+
+        // $answer = new PostJobCategory;
+        // $answer->post     = $post;
+        // $answer->job     = $job;
+       
+        // for($i = 1; $i < count($request->category); $i++) {
+        //     $answer->category     = $request->category[$i];
+        // }
+        // for($i = 1; $i < count($request->vacancy); $i++) {
+        //     $answer->vacancy     = $request->vacancy[$i];
+        // }
+        // for($i = 1; $i < count($request->amount); $i++) {
+        //     $answer->amount     = $request->amount[$i];
+        // }
+        // for($i = 1; $i < count($request->noFee); $i++) {
+        //     $answer->noFee     = $request->noFee[$i];
+        // }
+        // for($i = 1; $i < count($request->allowed); $i++) {
+        //     $answer->allowed     = $request->allowed[$i];
+        // }
+       
+        // $answer->save();
+
+        return redirect("/backend/editjobcategory/{$id}/{$request->post}")->with("message", "Categorywise Vacancies & Fee was updated successfully!");
     }
 
     /**

@@ -117,7 +117,41 @@ class JobPosts extends Controller
     {
         //dd($request);
          $data = $request->all();
-         $lastId =PostJobCategory::create($data);
+		
+		 if(!isset($data['uAcadmic']))
+		{
+			 $data['uAcadmic'] = 0;
+		}
+		 if(!isset($data['uAcadmic']))
+		{
+			 $data['uAcadmic'] = 0;
+		}
+		 if(!isset($data['uTeachExp']))
+		{
+			 $data['uTeachExp'] = 0;
+		}
+		 if(!isset($data['uResExp']))
+		{
+			 $data['uResExp'] = 0;
+		}
+		 if(!isset($data['uPreDetails']))
+		{
+			 $data['uPreDetails'] = 0;
+		} if(!isset($data['uNoc']))
+		{
+			 $data['uNoc'] = 0;
+		}
+		 if(!isset($data['uResArt_']))
+		{
+			 $data['uResArt_'] = 0;
+		}
+		 if(!isset($data['uResPub']))
+		{
+			 $data['uResPub'] = 0;
+		}
+		 //dd($data);
+		 JobPost::findOrFail($id)->update($data);
+         //$lastId =PostJobCategory::create($data);
 
 
         return redirect("/backend/jobposts")->with("message", "Job post was updated successfully!");

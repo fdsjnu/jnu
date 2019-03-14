@@ -132,28 +132,34 @@
         <div class="col-md-12">Upload Required Section</div>
        
         <div class="form-group col-md-4">
-         <input type="checkbox" name="uAcadmic" value="1" @if(old('uAcadmic', $jobpost->uAcadmic ?? 1) === 1) checked @endif />Upload Acadmic
+         @php  $x = (boolval($jobpost->uAcadmic) ? true : false); @endphp
+    	   {{ Form::checkbox('uAcadmic', '1',  $x  )   }} Upload Acadmic
            <!-- {{ Form::checkbox('uAcadmic', '1', true) }} Upload Acadmic -->
         </div>
          <div class="form-group col-md-4">
-    		 @php  $x = (boolval($jobpost->uTeachExp) ? true : false); @endphp
-    		 {{$x}}{{ Form::checkbox('uTeachExp', 'value',  $x  )   }} Upload Teaching Experience
+    		@php  $x = (boolval($jobpost->uTeachExp) ? true : false); @endphp
+    	   {{ Form::checkbox('uTeachExp', '1',  $x  )   }} Upload Teaching Experience
         </div>
          <div class="form-group col-md-4">
-           {{ Form::checkbox('uResExp', '1', true) }} Upload Research Experience
+		 @php  $x = (boolval($jobpost->uResExp) ? true : false); @endphp
+           {{ Form::checkbox('uResExp', '1',  $x ) }} Upload Research Experience
         </div>
 
          <div class="form-group col-md-4">
-           {{ Form::checkbox('uPreDetails', '1', true) }} Upload Present Employee certificate
+		 @php  $x = (boolval($jobpost->uPreDetails) ? true : false); @endphp
+           {{ Form::checkbox('uPreDetails', '1',  $x ) }} Upload Present Employee certificate
         </div>
          <div class="form-group col-md-4">
-           {{ Form::checkbox('uNoc', '1', true) }} Upload NOC Certificate
+		 @php  $x = (boolval($jobpost->uNoc) ? true : false); @endphp
+           {{ Form::checkbox('uNoc', '1',  $x ) }} Upload NOC Certificate
         </div>
          <div class="form-group col-md-4">
-           {{ Form::checkbox('uResArt ', '1', true) }} Upload Research Article
+		 @php  $x = (boolval($jobpost->uResArt) ? true : false); @endphp
+           {{ Form::checkbox('uResArt ', '1',  $x ) }} Upload Research Article
         </div>
          <div class="form-group col-md-12">
-            {{ Form::checkbox('uResPub', '1', true) }}  Upload Research Publication
+		 @php  $x = (boolval($jobpost->uResPub) ? true : false); @endphp
+            {{ Form::checkbox('uResPub', '1',  $x ) }}  Upload Research Publication
          
         </div>
 

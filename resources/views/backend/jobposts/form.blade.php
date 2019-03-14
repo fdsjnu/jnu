@@ -136,7 +136,8 @@
            <!-- {{ Form::checkbox('uAcadmic', '1', true) }} Upload Acadmic -->
         </div>
          <div class="form-group col-md-4">
-           {{ Form::checkbox('uTeachExp', '1', true) }} Upload Teaching Experience
+		 @php  $x = (boolval($jobpost->uTeachExp) ? true : false); @endphp
+		 {{$x}}{{ Form::checkbox('uTeachExp', 'value',  $x  )   }} Upload Teaching Experience
         </div>
          <div class="form-group col-md-4">
            {{ Form::checkbox('uResExp', '1', true) }} Upload Research Experience

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "293a14b1ce622d57ba51217a23ab69bb",
+    "content-hash": "348215e3cab56347005d2916b77f39e8",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -337,6 +337,51 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
+        },
+        {
+            "name": "hamog/captcha",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamog/captcha.git",
+                "reference": "ca25292d0794eb9c399b5125d2d125c2b7218b64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamog/captcha/zipball/ca25292d0794eb9c399b5125d2d125c2b7218b64",
+                "reference": "ca25292d0794eb9c399b5125d2d125c2b7218b64",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.4"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Hamog\\Captcha\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Hashem Moghaddari",
+                    "email": "hashemm364@gmail.com",
+                    "homepage": "https://github.com/hamog",
+                    "role": "Web Developer"
+                }
+            ],
+            "description": "Simple Laravel 5.2 Captcha Package",
+            "homepage": "https://github.com/hamog/captcha",
+            "keywords": [
+                "captcha",
+                "laravel5 Captcha",
+                "laravel5.2"
+            ],
+            "time": "2016-08-06T06:43:43+00:00"
         },
         {
             "name": "intervention/image",

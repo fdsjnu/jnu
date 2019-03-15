@@ -21,14 +21,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">MyBlog</a>
+             <div class="col-md-2 col-sm-2 "> <a class="navbar-brand" href="#"><img src="/img/jnu-logo-205x205.jpg" height="30" align="middle" /></a></div>
+              <div class="col-md-10 col-sm-10 ">जवाहरलाल नेहरू विश्वविद्यालय <br>JAWAHARLAL NEHRU UNIVERSITY</div>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="the-navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
               <li class=""><a href="{{ route('side') }}">Login</a></li>
-              <li class=""><a href="{{ route('blog') }}">Register</a></li>
+              <li class=""><a href="{{ route('side.signup') }}">Register</a></li>
                 <li class="active"><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
@@ -36,7 +37,11 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
         </nav>
+
     </header>
+<div class="text-center text-primary">
+ <h4>JAWAHARLAL NEHRU FACULTY RECRUITMENT PORTAL</h4>
+</div>
 
     @yield('content')
 

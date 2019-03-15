@@ -27,6 +27,9 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
         'Blog'       => 'post',
         'Users'      => 'user',
         'Categories' => 'category'
+
+
+
     ];
 
     foreach ($crudPermissionsMap as $permission => $methods)

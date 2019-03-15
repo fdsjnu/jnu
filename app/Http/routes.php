@@ -133,6 +133,10 @@ Route::get('/side/signup', [
     'as'   => 'side.signup'
 ]);
 
+Route::post('/side/signup/store', [
+    'uses' => 'SideController@store',
+    'as'   => 'side.signup.store'
+]);
 
 
 Route::get('loginc','LogincController@index');

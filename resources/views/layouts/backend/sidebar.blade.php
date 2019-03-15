@@ -36,7 +36,7 @@
       @if (check_user_permissions(request(), "Categories@index"))
         <li><a href="{{ route('backend.categories.index') }}"><i class="fa fa-folder"></i> <span>Categories</span></a></li>
       @endif
-      @if (check_user_permissions(request(), "Categories@index"))
+      @if (check_user_permissions(request(), "Departments@index"))
         <li><a href="{{ route('backend.departments.index') }}"><i class="fa fa-folder"></i> <span>Departments</span></a></li>
       @endif
        @if (check_user_permissions(request(), "Designation@index"))

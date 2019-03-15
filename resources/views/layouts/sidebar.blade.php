@@ -1,5 +1,49 @@
+
 <div class="col-md-4">
     <aside class="right-sidebar">
+    <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group field-loginform-username required has-success">
+<label class="control-label" for="loginform-username"><i class="fa fa-user" style="color:#000000;"></i> Registered Email-id</label>
+<input type="text" id="loginform-username" class="form-control" name="LoginForm[username]" placeholder="Applicant's Registered Email-id">
+
+<p class="help-block help-block-error"></p>
+</div>                        <div class="form-group field-loginform-password required has-success">
+<label class="control-label" for="loginform-password"><i class="fa fa-key" style="color:#000000"></i> Password</label>
+<input type="password" id="loginform-password" class="form-control" name="LoginForm[password]" placeholder="Applicant's Password">
+
+<p class="help-block help-block-error"></p>
+</div>                        <div class="form-group field-loginform-rememberme">
+<div class="checkbox">
+<label for="loginform-rememberme">
+<input type="hidden" name="LoginForm[rememberMe]" value="0"><input type="checkbox" id="loginform-rememberme" name="LoginForm[rememberMe]" value="1" checked="">
+Remember Me
+</label>
+<p class="help-block help-block-error"></p>
+
+</div>
+</div>                         <div class="form-group field-loginform-verifycode">
+<label class="control-label" for="loginform-verifycode">Verification Code (click to change)</label>
+<img id="loginform-verifycode-image" src="/jnurecRC57/index.php/site/captcha?v=5c8a5376c4722" alt=""> <input type="text" id="loginform-verifycode" class="form-control" name="LoginForm[verifyCode]">
+
+<p class="help-block help-block-error"></p>
+</div>                        <button type="submit" class="btn btn-primary" name="login-button">Login</button>                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <ul>
+                    <li><h4> <a href="/jnurecRC57/index.php/site/signup">New User Registration</a></h4></li>
+                    <li><h4><a href="/jnurecRC57/index.php/site/request-password-reset">Reset Password</a> </h4></li>
+                    <li><h4><a href="/jnurecRC57/index.php/site/about">Help</a></h4></li>
+                </ul>
+            </div>
+        </div>
         <div class="search-widget">
             <form action="{{ route('blog') }}">
                 <div class="input-group">

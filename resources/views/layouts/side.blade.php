@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
@@ -27,7 +28,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="the-navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-              <li class=""><a href="{{ route('side') }}">Login</a></li>
+              <li class=""><a href="{{ route('side') }}">Login</a></li> 
               <li class=""><a href="{{ route('blog') }}">Register</a></li>
                 <li class="active"><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="#">About</a></li>

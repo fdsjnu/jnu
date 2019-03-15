@@ -89,7 +89,7 @@ Route::get('/backend/categoriessearch/search', [
 
 Route::get('/backend/categoriessearch/search', 'Backend\CategoriesController@search');
 
-
+//Departments
 Route::resource('/backend/departments', 'Backend\DepartmentController');
 
 Route::get('/backend/departments/search', [
@@ -120,3 +120,20 @@ Route::put('/backend/updatejobcategory/{jobid}', [
 
 
 Route::resource('/backend/jobposts', 'Backend\JobPosts'); 
+
+
+//side controller
+
+Route::get('/side', [
+    'uses' => 'SideController@index',
+    'as'   => 'side'
+]);
+Route::get('/side/signup', [
+    'uses' => 'SideController@signup',
+    'as'   => 'side.signup'
+]);
+
+
+
+Route::get('loginc','LogincController@index');
+
